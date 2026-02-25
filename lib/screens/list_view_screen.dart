@@ -11,28 +11,63 @@ class ListViewScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text('Navigation List')),
-      body: ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          final title = faker.lorem.sentence();
-          final description = faker.lorem.word();
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                final title = faker.lorem.sentence();
+                final description = faker.lorem.word();
 
-          return ListTile(
-            leading: const Icon(Icons.article_outlined, color: Colors.indigo),
-            title: Text(title),
-            trailing: Icon(Icons.arrow_forward_ios),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      NewsScreen(title: title, description: description),
+                return ListTile(
+                  leading: const Icon(Icons.article_outlined, color: Colors.indigo),
+                  title: Text(title),
+                  trailing: Icon(Icons.arrow_forward_ios),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            NewsScreen(title: title, description: description),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/news2');
+                  },
+                  child: const Text('Go to news2'),
                 ),
-              );
-            },
-          );
-        },
+
+                ElevatedButton(
+                  onPressed: () {
+                    if (Navigator.canPop(context)) {
+                      Navigator.maybePop(context);
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('No previous screens to back')),
+                      );
+                    }
+                  },
+                  child: Text('Back using maybepop'),
+                ),
+              ],
+            ),
+          )
+
+        ],
       ),
+
+
       // body: ListView(
       //   children: [
       //     ListTile(

@@ -8,11 +8,23 @@ class NewsScreen2 extends StatelessWidget {
    return Scaffold(
       appBar: AppBar(title: Text('News Screen 2')),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/profile');
-          },
-          child: const Text('Go to profile'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/profile');
+              },
+              child: const Text('Go to profile')
+            ),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, '/profile');
+              },
+              child: const Text('Go to profile and replace NewsScreen2')
+            ),
+          ],
         ),
       ),
     );
