@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
       title: 'Navigation List',
       initialRoute: '/',
       routes: {
-        '/': (context) => ListViewScreen(),
-        '/news': (context) => NewsScreen()
+        '/': (context) => const ListViewScreen(),
+        '/news': (context) => const NewsScreen()
       },
     );
   }
