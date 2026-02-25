@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:navigation/screens/list_view_screen.dart';
-import 'package:navigation/screens/news_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const ListViewScreen(),
-        '/news': (context) => const NewsScreen()
+        // '/news': (context) => const NewsScreen(title: '', description: '')
       },
     );
   }
